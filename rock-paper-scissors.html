@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rock-Paper-Scissors</title>
+    <link rel="stylesheet" href="rock-paper-scissors.css" />
+  </head>
+  <body>
+    <p class="title">Rock Paper Scissors</p>
+
+    <!-- Rock button code -->
+    <button
+      class="move-button"
+      onclick="
+      playGame('Rock');
+"
+    >
+      <img class="moves-icon" src="icons/rock-emoji.png" alt="emoji" />
+    </button>
+
+    <!-- paper button code -->
+    <button
+      class="move-button"
+      onclick="
+      playGame('Paper');
+"
+    >
+      <img class="moves-icon" src="icons/paper-emoji.png" alt="emoji" />
+    </button>
+
+    <!-- Scissors button code -->
+    <button
+      class="move-button"
+      onclick="
+      playGame('Scissors')
+"
+    >
+      <img class="moves-icon" src="icons/scissors-emoji.png" alt="emoji" />
+    </button>
+
+    <!--to update result on web page-->
+    <p class="js-results results"></p>
+
+    <!-- to update moves on web page-->
+    <p class="js-moves"></p>
+
+    <!-- to update scores on web page-->
+    <p class="js-score score"></p>
+
+    <button
+      class="reset-button"
+      onclick="
+      score.wins=0;
+      score.losses=0;
+      score.ties=0;
+      localStorage.removeItem('score');
+      updateScoreElement();
+    "
+    >
+      Reset Score
+    </button>
+
+    <button class="autoplay-button js-autoplay-button" onclick="autoPlay();">
+      Auto Play
+    </button>
+
+    <script src="rock-paper-scissors.js"></script>
+  </body>
+</html>
