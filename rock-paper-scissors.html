@@ -33,18 +33,7 @@
     <!-- to update scores on web page-->
     <p class="js-score score"></p>
 
-    <button
-      class="reset-button"
-      onclick="
-      score.wins=0;
-      score.losses=0;
-      score.ties=0;
-      localStorage.removeItem('score');
-      updateScoreElement();
-    "
-    >
-      Reset Score
-    </button>
+    <button class="reset-button js-reset-button">Reset Score</button>
 
     <button class="autoplay-button js-autoplay-button">Auto Play</button>
 

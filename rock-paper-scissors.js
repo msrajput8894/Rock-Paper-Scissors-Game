@@ -127,7 +127,17 @@ function playGame(playerMove) {
     score.ties += 1;
   }
 
+  // this converts the score into string to store it in local storage.
   localStorage.setItem("score", JSON.stringify(score));
+
+  // event listener for reset button to reset the score.
+  document.querySelector(".js-reset-button").addEventListener("click", () => {
+    score.wins = 0;
+    score.losses = 0;
+    score.ties = 0;
+    localStorage.removeItem("score");
+    updateScoreElement();
+  });
 
   // to update the score on the webpage
   updateScoreElement();
