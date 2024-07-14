@@ -41,6 +41,22 @@ function autoPlay() {
   }
 }
 
+// eventlister for rock button
+document.querySelector(".js-rock-button").addEventListener("click", () => {
+  playGame("Rock");
+});
+
+// event listener for paper button
+document.querySelector(".js-paper-button").addEventListener("click", () => {
+  playGame("Paper");
+});
+
+// event listener for scissors button
+document.querySelector(".js-scissors-button").addEventListener("click", () => {
+  playGame("Scissors");
+});
+
+//Play game function
 function playGame(playerMove) {
   const computerMove = pickComputerMove();
   let result = "";
