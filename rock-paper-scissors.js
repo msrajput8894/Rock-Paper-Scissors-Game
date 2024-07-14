@@ -25,6 +25,10 @@ updateScoreElement();
 let isAutoPlaying = false;
 let intervalId;
 
+document.querySelector(".js-autoplay-button").addEventListener("click", () => {
+  autoPlay();
+});
+
 function autoPlay() {
   const buttonElement = document.querySelector(".js-autoplay-button");
   if (!isAutoPlaying) {
@@ -32,7 +36,7 @@ function autoPlay() {
       const playerMove = pickComputerMove();
       playGame(playerMove);
     }, 1000);
-    buttonElement.innerHTML = "Stop Play";
+    buttonElement.innerHTML = "Stop Playing";
     isAutoPlaying = true;
   } else {
     clearInterval(intervalId);
@@ -94,6 +98,7 @@ function playGame(playerMove) {
     }
   }
 
+  //uupdates score in score object
   if (result === "You Win!") {
     score.wins += 1;
   } else if (result === "You Lose") {
@@ -116,6 +121,7 @@ function playGame(playerMove) {
       Computer`;
 }
 
+//function to update the score on webpage
 function updateScoreElement() {
   document.querySelector(
     ".js-score"
