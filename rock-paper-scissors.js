@@ -25,32 +25,27 @@ updateScoreElement();
 let isAutoPlaying = false;
 let intervalId;
 
-document.querySelector(".js-autoplay-button").addEventListener("click", () => {
-  autoPlay();
-});
-
 function autoPlay() {
-  const buttonElement = document.querySelector(".js-autoplay-button");
   if (!isAutoPlaying) {
-    intervalId = setInterval(function () {
+    intervalId = setInterval(() => {
       const playerMove = pickComputerMove();
       playGame(playerMove);
     }, 1000);
-    buttonElement.innerHTML = "Stop Playing";
+
     isAutoPlaying = true;
+
+    // to change button text to stop playing
+    document.querySelector(".js-autoplay-button").innerHTML = "Stop Playing";
   } else {
     clearInterval(intervalId);
     isAutoPlaying = false;
-    buttonElement.innerHTML = "Auto Play";
+    document.querySelector(".js-autoplay-button").innerHTML = "Auto Play";
   }
 }
 
-// to autoplay using key
-
-document.body.addEventListener("keydown", (event) => {
-  if (event.key === "a") {
-    autoPlay();
-  }
+// event listener for autoplay button
+document.querySelector(".js-autoplay-button").addEventListener("click", () => {
+  autoPlay();
 });
 
 // eventlister for rock button
@@ -68,15 +63,19 @@ document.querySelector(".js-scissors-button").addEventListener("click", () => {
   playGame("Scissors");
 });
 
-// to play game using keys 'r' -> rock, 'p'-> paper and 's' -> scissors
+// to play game using keyboard
 
 document.body.addEventListener("keydown", (event) => {
   if (event.key === "r") {
     playGame("Rock");
   } else if (event.key === "p") {
     playGame("Paper");
-  } else if (event.key) {
+  } else if (event.key === "s") {
     playGame("Scissors");
+  } else if (event.key === "a") {
+    autoPlay();
+  } else if (event.key === "Backspace") {
+    resetScore();
   }
 });
 
@@ -130,15 +129,6 @@ function playGame(playerMove) {
   // this converts the score into string to store it in local storage.
   localStorage.setItem("score", JSON.stringify(score));
 
-  // event listener for reset button to reset the score.
-  document.querySelector(".js-reset-button").addEventListener("click", () => {
-    score.wins = 0;
-    score.losses = 0;
-    score.ties = 0;
-    localStorage.removeItem("score");
-    updateScoreElement();
-  });
-
   // to update the score on the webpage
   updateScoreElement();
 
@@ -173,3 +163,17 @@ function pickComputerMove() {
 
   return computerMove;
 }
+
+// reset score function
+function resetScore() {
+  score.wins = 0;
+  score.losses = 0;
+  score.ties = 0;
+  localStorage.removeItem("score");
+  updateScoreElement();
+}
+
+// event listener for reset button to reset the score.
+document.querySelector(".js-reset-button").addEventListener("click", () => {
+  resetScore();
+});
