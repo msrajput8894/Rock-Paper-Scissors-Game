@@ -36,7 +36,8 @@ body {
 }
 
 .reset-button,
-.autoplay-button {
+.autoplay-button,
+.reset-confirm-button {
   border: none;
   padding: 10px 15px;
   font-size: 15px;
