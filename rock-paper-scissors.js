@@ -45,6 +45,14 @@ function autoPlay() {
   }
 }
 
+// to autoplay using key
+
+document.body.addEventListener("keydown", (event) => {
+  if (event.key === "a") {
+    autoPlay();
+  }
+});
+
 // eventlister for rock button
 document.querySelector(".js-rock-button").addEventListener("click", () => {
   playGame("Rock");
@@ -58,6 +66,18 @@ document.querySelector(".js-paper-button").addEventListener("click", () => {
 // event listener for scissors button
 document.querySelector(".js-scissors-button").addEventListener("click", () => {
   playGame("Scissors");
+});
+
+// to play game using keys 'r' -> rock, 'p'-> paper and 's' -> scissors
+
+document.body.addEventListener("keydown", (event) => {
+  if (event.key === "r") {
+    playGame("Rock");
+  } else if (event.key === "p") {
+    playGame("Paper");
+  } else if (event.key) {
+    playGame("Scissors");
+  }
 });
 
 //Play game function
